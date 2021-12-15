@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="sub_transaction_tree_view" model="ir.ui.view">
+            <field name="name">transaction</field>
+            <field name="model">sub.transaction</field>
+            <field name="arch" type="xml">
+                <tree string="" create="false">
+                    <field name="name"/>
+                    <field name="status_trans"/>
+                </tree>
+            </field>
+        </record>
+
+       <record id="action_sub_transaction" model="ir.actions.act_window">
+           <field name="name">transaction</field>
+           <field name="type">ir.actions.act_window</field>
+           <field name="res_model">sub.transaction</field>
+           <field name="view_mode">tree,form</field>
+           <field name="help" type="html">
+             <p class="oe_view_nocontent_create">
+               <!-- Add Text Here -->
+             </p><p>
+               <!-- More details about what a user can do with this object will be OK -->
+             </p>
+           </field>
+       </record>
+        <menuitem id="transaction_root" name="transaction" parent="MSC_root" action="action_sub_transaction" sequence="50"/>
+
+
+    </data>
+</odoo>

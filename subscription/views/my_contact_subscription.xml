@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="subscriptionpro_contactditeals_tree_view" model="ir.ui.view">
+            <field name="name">contacts</field>
+            <field name="model">sub.cont</field>
+            <field name="arch" type="xml">
+                <tree string="" decoration-bf="marital_status" default_order="name">
+                    <field name="name"/>
+                    <field name="marital_status"/>
+                    <field name="spouse"/>
+                    <field name="address"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="sub_cont_kanban_view" model="ir.ui.view">
+            <field name="name">contacts</field>
+            <field name="model">sub.cont</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="name"/>
+                    <field name="mobile_no"/>
+                    <field name="email_id"/>
+                    <field name="date_of_birth"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_details oe_kanban_global_click">
+                                <strong>
+                                    NAME:
+                                    <field name="name"/>
+                                </strong>
+                                <ul>
+                                    <li>
+                                        CONTACT:
+                                        <field name="mobile_no"/>
+                                    </li>
+                                    <li>
+                                        EMAIL:
+                                        <field name="email_id"/>
+                                    </li>
+                                    <li>
+                                        DOB:
+                                        <field name="date_of_birth"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="sub_cont_graph_view" model="ir.ui.view">
+            <field name="name">contacts</field>
+            <field name="model">sub.cont</field>
+            <!--            <field name="type">graph</field>-->
+            <field name="arch" type="xml">
+                <graph string="Sales Order Lines">
+                    <field name="marital_status"/>
+                </graph>
+            </field>
+        </record>
+
+
+        <record id="subscriptionpro_contactditeals_from_view" model="ir.ui.view">
+            <field name="name">contacts</field>
+            <field name="model">sub.cont</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <button name="action_send_to_email" type="object" string="send email"/>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="get_data_subscriptions"
+                                    string="Subscriptions"
+                                    type="object"
+                                    class="oe_stat_button"
+                                    icon="fa-address-card">
+                                <field name="count_subscription"/>
+                            </button>
+                            <button name="get_data_payments"
+                                    string="Payments"
+                                    type="object"
+                                    class="oe_stat_button"
+                                    icon="fa-credit-card">
+                                <strong>
+                                    <field name="count_payment"/>
+                                </strong>
+                            </button>
+                            <button name="get_data_transactions"
+                                    string="Transactions"
+                                    type="object"
+                                    class="oe_stat_button"
+                                    icon="fa-exchange">
+                                <field name="count_transaction"/>
+                            </button>
+                        </div>
+                        <div class="o_td_label">
+                            <field name="date" readonly="1"/>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name" style="color:green;"/>
+                                <field name="marital_status"/>
+                                <field name="spouse" attrs="{'invisible':[('marital_status','=','unmarried')]}"/>
+                                <field name="address"/>
+                                <field name="date_of_birth"/>
+                                <field name="company_id" invisible="1"/>
+                                <field name="signature" widget="signature"/>
+                            </group>
+                            <group>
+                                <field name="mobile_no" widget="phone"/>
+                                <field name="email_id"/>
+                                <field name="kyc"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="subscription">
+                                <field name="sub_mem">
+                                    <tree editable="bottom" decoration-success="validity_1">
+                                        <field name="validity_1"/>
+                                        <field name="start_date"/>
+                                        <field name="end_date"/>
+                                        <!--                                        <field name="name" attrs="{'invisible':[('name', '=', False)]}" nolabel="1"/>-->
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="payment">
+                                <field name="sub_paymment">
+                                    <tree editable="bottom" decoration-bf="payment_select">
+                                        <field name="payment_select"/>
+                                        <field name="payment_date"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <!--                            <page string="transaction">-->
+                            <!--                                <field name="transaction_id">-->
+                            <!--                                    <tree editable="top">-->
+                            <!--                                        <field name="status_trans"/>-->
+                            <!--                                        <field name="name" attrs="{'invisible':[('name', '=', False)]}" nolabel="1"/>-->
+                            <!--                                    </tree>-->
+                            <!--                                </field>-->
+                            <!--                            </page>-->
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_subscriptionpro_contactditeals" model="ir.actions.act_window">
+            <field name="name">contacts</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sub.cont</field>
+            <field name="view_mode">kanban,tree,form,graph,activity</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+        <menuitem id="MSC_root" name="MSC" sequence="10" web_icon="subscription_pro,static/description/icon.png"/>
+        <menuitem id="MSC_contact_root" name="contact" parent="MSC_root" action="action_subscriptionpro_contactditeals"
+                  sequence="20"/>
+    </data>
+</odoo>

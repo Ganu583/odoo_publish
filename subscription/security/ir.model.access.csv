@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sub_cont,sub.cont,model_sub_cont,base.group_user,1,1,1,1
+access_sub_memb,sub.memb,model_sub_memb,base.group_user,1,1,1,1
+access_sub_pay,sub.pay,model_sub_pay,base.group_user,1,1,1,1
+access_sub_transaction,sub.transaction,model_sub_transaction,base.group_user,1,1,1,1

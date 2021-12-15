@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="email_scheduled_data" model="ir.cron">
+            <field name="name">scheduled mail</field>
+            <field name="active" eval="False"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall">1</field>
+            <field name="model_id" ref="subscription_pro.model_sub_cont"/>
+            <field name="code"></field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="report_subscription_contact_details" model="ir.actions.report">
+            <field name="name">subscription contact</field>
+            <field name="model">sub.cont</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">subscription_pro.report_contact_detail</field>
+            <field name="report_file">subscription_pro.report_contact_detail</field>
+            <field name="binding_model_id" ref="subscription_pro.model_sub_cont"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="sub_memb_tree_view" model="ir.ui.view">
+            <field name="name">subscription</field>
+            <field name="model">sub.memb</field>
+            <field name="arch" type="xml">
+                <tree string="sub" create="false">
+                    <field name="name"/>
+                    <field name="validity_1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="sub_memb_form_view" model="ir.ui.view">
+            <field name="name">subscription</field>
+            <field name="model">sub.memb</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="get_data_sub"
+                                    string="Subscriptions"
+                                    type="object"
+                                    class="oe_stat_button"
+                                    icon="fa-address-card">
+                            </button>
+                            <button name="get_data_pay"
+                                    string="Payments"
+                                    type="object"
+                                    class="oe_stat_button"
+                                    icon="fa-credit-card">
+                            </button>
+                            <button name="get_data_trans"
+                                    string="Transactions"
+                                    type="object"
+                                    class="oe_stat_button"
+                                    icon="fa-exchange">
+                            </button>
+                        </div>
+                        <group>
+                            <field name="name"/>
+                            <field name="validity_1"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_sub_memb" model="ir.actions.act_window">
+            <field name="name">subscription</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sub.memb</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="subscription_root" name="subscription" parent="MSC_root" action="action_sub_memb" sequence="30"/>
+    </data>
+</odoo>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Email template for reset password -->
+        <record id="email_template_subscription_contact" model="mail.template">
+            <field name="name">send email</field>
+            <field name="model_id" ref="subscription_pro.model_sub_cont"/>
+            <field name="subject">subscription_pro (Ref ${object.name})</field>
+            <field name="email_from">${object.company_id.email_formatted |safe}</field>
+            <!--            <field name="email_from">ganureddy54@gmail.com</field>-->
+            <field name="email_to">${object.email_id}</field>
+            <field name="auto_delete" eval="False"/>
+            <field name="body_html" type="html">
+                <p>send email</p>
+                <!--                <div style="margin: 0px; padding: 0px;">-->
+                <!--                    <p style="margin: 0px; padding: 0px; font size: 13px;">-->
+                <!--                        Dear ${object.email_id}-->
+                <!--                        <br/>-->
+                <!--                        <br/>-->
+                <!--                        here is your card with ref ${object.email_id}-->
+                <!--                        <br/>-->
+                <!--                        <br/>-->
+                <!--                        any question.-->
+                <!--                    </p>-->
+                <!--                </div>-->
+            </field>
+            <!--            <field name="lang">{{ object.lang }}</field>-->
+            <!--            <field name="auto_delete" eval="True"/>-->
+        </record>
+
+
+    </data>
+</odoo>

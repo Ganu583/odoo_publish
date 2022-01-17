@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+        <menuitem id="newlife_hospital_root" name="New Life hospital" sequence="3"/>
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="newlife_patient_categ" name="patient" parent="newlife_hospital_root" sequence="2"/>
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="newlife_appointment_categ" name="Appointment" parent="newlife_hospital_root" sequence="20"/>
+    </data>
+</odoo>

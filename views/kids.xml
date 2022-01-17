@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="action_newlife_hospital_kids" model="ir.actions.act_window">
+            <field name="name">kids</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">newlife_hospital.patient</field>
+            <field name="domain">[('age', '&lt;=', '18')]</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+        <menuitem id="kids_categ_root" name="kids" parent="newlife_patient_categ"
+                  action="action_newlife_hospital_kids" sequence="1"/>
+
+
+    </data>
+</odoo>
